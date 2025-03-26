@@ -8,7 +8,7 @@ $password = "1234";
 $conexion = mysqli_connect($server, $user, $password, $database);
 
 if ($conexion) {
-    echo "Conexion exitosa";
+    null;
 } else {
     echo "No se pudo conectar";
 }
