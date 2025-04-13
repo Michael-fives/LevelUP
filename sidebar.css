@@ -1,0 +1,260 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: white;
+    font: 16px 'KoHo bold', sans-serif;
+}
+
+/* Inicio de la barra lateral */
+.sidebar-menu {
+    position: fixed;
+    width: 25%;
+    height: 100vh;
+    background-color: darkred;
+    transition: all 0.5s;
+    min-width: 370px;
+    min-height: 100vh;
+    overflow-y: auto; /* Agregar scrollbar vertical si el contenido excede */
+    z-index: 1; /* Asegurarse de que la barra lateral esté encima del contenido */
+}
+
+/* Parte superior de la barra */
+.superior-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: darkred;
+    position: relative; /* Necesario para posicionar la línea blanca */
+}
+
+.user-part {
+    display: flex;
+    flex-direction: column; /* Para alinear el logout debajo del nombre de usuario */
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 10px; /* Separar un poco del borde izquierdo */
+}
+
+.user-part span {
+    margin-bottom: 15px;
+    color: white;
+}
+
+.user-part a {
+    color: white;
+}
+
+.logout-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 50%;
+    width:  40px;
+    height: 40px;
+    margin-bottom: 35px;
+    margin-left: 60px;
+}
+
+.logout-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.logout-button:disabled {
+    visibility: hidden;
+    opacity: 0;
+    cursor: default;
+}
+
+.logout-button:disabled .logout-icon {
+    display: none;
+}
+
+.white-line {
+    width: 68%;
+    height: 10px;
+    align-self: right;
+    background-color: white;
+    position: absolute;
+    left: 26.5%;
+    bottom: 15%;
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+}
+/* Fin de la parte superior de la barra */
+
+/* Parte del menú */
+.menu-part {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 22px;
+    margin-left: 3%;
+    height: auto;
+}
+
+.menu-part ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-left: 8px solid white;
+}
+
+.menu-part a {
+    color: white;
+    text-decoration: none;
+}
+
+ /* Cambiara conforme se seleccione una opción */
+.actual {
+    font-size: 32px;
+    margin-left: 8px;
+}
+
+.actual-li {
+    border-left: 12px solid white;
+    padding-left: 0%;
+    margin-left: -10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.menu li a:hover {
+    color: white;
+    font-size: 32px;
+    padding-left: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Fin de la parte del menú */
+
+/* Parte de redes sociales */
+.bottom-part {
+    bottom: 0;
+    margin-left: 5.5%;
+    margin-top: -5%;
+    color: white;
+    font-size: 12px;
+    height: auto;
+}
+
+.bottom-part ul {
+    list-style: none;
+    padding-left: 0%;
+}
+.bottom-part li {
+    padding-bottom: 10px;
+}
+
+.bottom-part img {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+}
+
+.bottom-part a {
+    color: white;
+    text-decoration: none;
+}
+/* Fin de la parte de redes sociales */
+
+/* Terminos y politicas */
+.terms_and_politics {
+    margin-top: 3%;
+    margin-left: 5.5%;
+    font-size: 12px;
+    color: white;
+    text-align: left;
+}
+
+.terms_and_politics a {
+    color: white;
+}
+
+/* Fin de terminos y politicas */
+
+.admin-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1%;
+    margin-top: 5%;
+    font-size: 12px;
+    color: white;
+}
+
+.admin-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 50%;
+    width:  40px;
+    height: 40px;
+    margin-bottom: 35px;
+    margin-right: -5em;
+}
+
+.admin-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.admin-buttons .logout-button {
+    margin-left: 6.6em;
+}
+
+.user-part button:hover {
+    transform: scale(1.05);
+}
+
+/* Fin de la barra lateral */
+
+.main-content {
+    flex-grow: 1; /* Permite que el contenido principal ocupe el resto del espacio */
+    background-image: url(./Images/deffaultBG.png);
+    transition: all 0.5s;
+    padding: 20px;
+    overflow: auto;
+    overflow-x: auto;
+    z-index: 1;
+    margin-left: 25%;
+    font-style: 'KoHo', sans-serif;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1480px) { /* Cuando el ancho de la pantalla sea menor que 1480px */
+    .sidebar-menu {
+        width: 370px; /* Fija el ancho de la barra lateral a su mínimo */
+        overflow: auto;
+    }
+
+    .main-content {
+        margin-left: 370px; /* Ajusta el margen izquierdo al ancho fijo de la barra lateral */
+    }
+}
+
+@media (max-width: 800px) { /* Para pantallas muy pequeñas */
+    .sidebar-menu {
+        width: 100%;
+        min-width: 100%;
+        overflow: auto;
+    }
+
+    .main-content {
+        margin-left: 0; /* Elimina el margen izquierdo */
+        padding-left: 20px; /* Añade un padding para que el contenido no quede pegado al borde */
+    }
+}

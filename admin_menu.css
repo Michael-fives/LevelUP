@@ -1,0 +1,63 @@
+.admin-button {
+    background-color: antiquewhite;
+}
+
+h1 {
+    color: darkred;
+    padding: 0.2em;
+    background-color: white;
+    border: 3px solid darkred;
+    font-size: 25px;
+    border-radius: 3em;
+    text-align: center;
+}
+
+.admin-options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    gap: 1em;
+    background-color: darkred;
+    border: 3px solid darkred;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+button {
+    background-color: white;
+    border: 3px solid darkred;
+    font-size: 1em;;
+    border-radius: 3em;
+    text-align: center;
+    padding: 0.5em;;
+}
+
+button:hover {
+    transform: scale(1.01);
+    transform: translateY(-2px);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1480px) { /* Cuando el ancho de la pantalla sea menor que 1480px */
+    .sidebar-menu {
+        width: 370px; /* Fija el ancho de la barra lateral a su mínimo */
+        overflow: auto;
+    }
+
+    .main-content {
+        margin-left: 370px; /* Ajusta el margen izquierdo al ancho fijo de la barra lateral */
+    }
+}
+
+@media (max-width: 800px) { /* Para pantallas muy pequeñas */
+    .sidebar-menu {
+        width: 100%;
+        min-width: 100%;
+        overflow: auto;
+    }
+
+    .main-content {
+        margin-left: 0; /* Elimina el margen izquierdo */
+        padding-left: 20px; /* Añade un padding para que el contenido no quede pegado al borde */
+    }
+}

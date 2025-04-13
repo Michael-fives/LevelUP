@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level UP - Acerca de nosotros</title>
+    <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="acercade.css">
     <link rel="icon" href="./Images/LOGO.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,12 +15,55 @@
 <body>
     <div class="sidebar-menu">
         <div class="superior-part">
-            <img src= "./Images/LOGO.png" class="logo" alt="Level UP">
+            <img src="./Images/LOGO.png" class="logo" alt="Level UP">
             <div class="user-part">
-                <button class="logout-button">
-                    <img src="./Images/logoutIcon.png" class="logout-icon">
-                </button>
-                <span class="username"><a href="./login.html">Iniciar sesión</a></span>
+            <?php 
+                    session_start();
+                    include 'conexion.php';
+
+                    if (isset($_SESSION['username'])) {
+                        // Usuario logueado
+                        $username = mysqli_real_escape_string($conexion, $_SESSION['username']);
+                        $sql = mysqli_query($conexion, "SELECT username FROM usuarios WHERE username = '$username'");
+                        $row = mysqli_fetch_assoc($sql);
+                        
+                        $result = mysqli_query($conexion, "SELECT admin_ FROM usuarios WHERE username = '$username'");
+                        $admin_row = mysqli_fetch_assoc($result); 
+                        $admin_status = $admin_row['admin_'];
+
+                        if ($admin_status == 0) {
+                            // Usuario no es administrador
+                        
+                ?>
+                            <button class="logout-button" onclick="window.location.href='./logout.php'">
+                                <img src="./Images/logoutIcon.png" class="logout-icon">
+                            </button>
+                            <span class="username"><a href="#user">@<?php echo htmlspecialchars($row["username"]); ?></a></span>
+                <?php
+                        } else {
+                            // Usuario es administrador
+                ?>
+                            <div class="admin-buttons">
+                                <button class="admin-button" onclick="window.location.href='./admin_menu.php'">
+                                    <img src="./Images/adminIcon.png" class="admin-icon">
+                                </button>
+                                <button class="logout-button" onclick="window.location.href='./logout.php'">
+                                    <img src="./Images/logoutIcon.png" class="logout-icon">
+                                </button>
+                            </div>
+                            <span class="username"><a href="#user">@<?php echo htmlspecialchars($row["username"]); ?></a></span>
+                <?php
+                        }
+                    } else {
+                        // Usuario no logueado
+                ?>
+                        <button class="logout-button" onclick="window.location.href='./logout.php'" disabled>
+                            <img src="./Images/logoutIcon.png" class="logout-icon">
+                        </button>
+                        <span class="username"><a href="./login.php">Iniciar sesión</a></span>
+                <?php
+                    }
+                ?>   
             </div>
             <div class="white-line"></div>
         </div>
