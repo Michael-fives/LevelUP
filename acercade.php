@@ -72,7 +72,7 @@
                 <li><a href="./productos_usuario.php">Inicio</a></li>
                 <li><a href="#perfil">Perfil</a></li>
                 <li><a href="#amigos">Amigos</a></li>
-                <li class="actual-li"><a href="./acercade.html" class="actual">Acerca de nosotros</a></li>
+                <li class="actual-li"><a href="./acercade.php" class="actual">Acerca de nosotros</a></li>
                 <li><a href="#carga-actual">Carga actual</a></li>
             </ul>
         </div>
