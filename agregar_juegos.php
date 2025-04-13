@@ -102,7 +102,7 @@
             <label>Puntuación</label>
             <input type="number" placeholder="5 stars!" id="rating" name="rating" required min="1" max="5" step="0.01" >
             <label>Imagen</label>
-            <input type="url" placeholder="URL" id="img" name="img" required>
+            <input type="text" placeholder="URL" id="img" name="img" required>
             <label>Fecha de lanzamiento</label>
             <input type="date" id="release_date" name="release_date" required>
             <button type="submit" name="register" value="register">Añadir juego</button>

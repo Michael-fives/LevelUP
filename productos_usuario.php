@@ -112,7 +112,7 @@
                 <div class="videogames">
                     <div class="card">
                         <div class="left-side">
-                            <img src="<?php echo $row["img"]; ?>" alt="<?php echo $row["title"]; ?>">
+                            <img src="./Game/<?php echo $row["img"]; ?>" alt="<?php echo $row["title"]; ?>">
                             <p class="release-date"><?php echo $row["release_date"]; ?></p>
                             <p class="genre"><?php echo $row["genre"]; ?></p>
                             <div class="bottom-left-side">
