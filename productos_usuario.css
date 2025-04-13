@@ -76,7 +76,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    gap: 3em; 
+    gap: 1.5em 3em; 
     width: 100%;
     max-width: 100%;
 }
@@ -91,7 +91,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 5px solid darkred;
     width: 90.5%;
-    height: 85%;
+    height: 90%;
     margin-top: 5%;
 }
 
@@ -196,6 +196,11 @@
     .main-content {
         margin-left: 370px; /* Ajusta el margen izquierdo al ancho fijo de la barra lateral */
     }
+
+    .container {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+        gap: 1em; /* Reduce el espacio entre las tarjetas */
+    }
 }
 
 @media (max-width: 800px) { /* Para pantallas muy pequeñas */
@@ -208,5 +213,10 @@
     .main-content {
         margin-left: 0; /* Elimina el margen izquierdo */
         padding-left: 20px; /* Añade un padding para que el contenido no quede pegado al borde */
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+        gap: 1em; /* Reduce el espacio entre las tarjetas */
     }
 }

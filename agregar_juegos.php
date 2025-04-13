@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level UP - Administración</title>
+    <title>Level UP - Nuevo juego</title>
     <link rel="stylesheet" href="sidebar.css">
-    <link rel="stylesheet" href="admin_menu.css">
+    <link rel="stylesheet" href="agregar_juegos.css">
     <link rel="icon" href="./Images/LOGO.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-</head>
 </head>
 <body>
     <div class="sidebar-menu">
@@ -57,7 +56,7 @@
                     } else {
                         // Usuario no logueado
                 ?>
-                        <button class="logout-button" onclick="window.location.href='./logout.php'" disabled>
+                        <button class="logout-button" onclick="window.location.href='./logout.php'">
                             <img src="./Images/logoutIcon.png" class="logout-icon">
                         </button>
                         <span class="username"><a href="./login.php">Iniciar sesión</a></span>
@@ -90,13 +89,24 @@
         </div>
     </div>
     <div class="main-content">
-        <h1>Menú de Administración</h1>
-        <div class="admin-options">
-            <button onclick="window.location.href=''">Administrar usuarios</button>
-            <button onclick="window.location.href='./productos_admin.php'">Administrar productos</button>
-            <button onclick="window.location.href='./agregar_juegos.php'">Agregar juegos</button>
-            <button onclick="window.location.href=''">Administrar pedidos</button>
-            <button onclick="window.location.href=''">Ver reportes</button>
-        </div>
+        <h1>Agregar nuevo juego</h1>
+        <form method="POST" action="registro_productos.php" name="signin-form">
+            <label>Título</label>
+            <input type="text" placeholder="LevelGame" id="title" name="title" required>
+            <label>Genero</label>
+            <input type="text" placeholder="Soulslike" id="genre" name="genre" required>
+            <label>Costo</label>
+            <input type="number" placeholder="Moneyyy" id="price" name="price" required min="0" step="0.01">
+            <label>Descripción</label>
+            <input type="text" placeholder="This is a really good game" id="descr" name="descr" required>
+            <label>Puntuación</label>
+            <input type="number" placeholder="5 stars!" id="rating" name="rating" required min="1" max="5" step="0.01" >
+            <label>Imagen</label>
+            <input type="url" placeholder="URL" id="img" name="img" required>
+            <label>Fecha de lanzamiento</label>
+            <input type="date" id="release_date" name="release_date" required>
+            <button type="submit" name="register" value="register">Añadir juego</button>
+        </form>
     </div>
 </body>
+</html>
