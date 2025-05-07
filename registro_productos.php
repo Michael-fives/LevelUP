@@ -38,6 +38,7 @@ mysqli_stmt_execute($stmt);
 if (mysqli_stmt_affected_rows($stmt) > 0) {
     // Redirigir al usuario a login.html
     echo "Registro exitoso";
+    header("Location: agregar_juegos.php?message=Producto añadido con éxito");
     exit(); // Asegura que el script se detenga después de la redirección
 } else {
     echo "Error: " . mysqli_error($conexion);

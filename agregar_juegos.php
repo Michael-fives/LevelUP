@@ -43,7 +43,7 @@
                             // Usuario es administrador
                 ?>
                             <div class="admin-buttons">
-                                <button class="admin-button" onclick="window.location.href='./admin_menu.php'" disabled>
+                                <button class="admin-button" onclick="window.location.href='./admin_menu.php'">
                                     <img src="./Images/adminIcon.png" class="admin-icon">
                                 </button>
                                 <button class="logout-button" onclick="window.location.href='./logout.php'">

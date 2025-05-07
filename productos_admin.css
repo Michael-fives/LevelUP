@@ -40,3 +40,26 @@ table th:first-child {
 table th:last-child {
     border-top-right-radius: 10px;
 }
+
+table button {
+    background-color: darkred;
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5%;
+}
+
+table td :last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+button:hover {
+    transform: scale(1.05);
+}

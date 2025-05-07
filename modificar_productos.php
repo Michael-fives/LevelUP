@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level UP - Ad_productos</title>
+    <title>Level UP - Editar juegos</title>
     <link rel="stylesheet" href="sidebar.css">
-    <link rel="stylesheet" href="productos_admin.css">
+    <link rel="stylesheet" href="agregar_juegos.css">
     <link rel="icon" href="./Images/LOGO.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="sidebar-menu">
+    <div class="sidebar-menu">
         <div class="superior-part">
             <img src="./Images/LOGO.png" class="logo" alt="Level UP">
             <div class="user-part">
-            <?php 
+                <?php    
                     session_start();
                     include 'conexion.php';
 
@@ -62,7 +62,7 @@
                         <span class="username"><a href="./login.php">Iniciar sesión</a></span>
                 <?php
                     }
-                ?>   
+                ?> 
             </div>
             <div class="white-line"></div>
         </div>
@@ -89,58 +89,64 @@
         </div>
     </div>
     <div class="main-content">
-        <div class="container">
-            <?php 
+        <?php
+            // Verificar si hay un ID en el POST
+            if (isset($_POST['id'])) {
+                $product_id = $_POST['id'];
+
+                // Conexión a la base de datos
                 include 'conexion.php';
 
-                // Obtener los datos del formulario
-                $sql = mysqli_query($conexion, "SELECT * FROM videojuegos");
-            ?>
-            <div class="table container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Titulo</th>
-                            <th>Genero</th>
-                            <th>Precio</th>
-                            <th>Descripcion</th>
-                            <th>Puntuación</th>
-                            <th>Imagen</th>
-                            <th>Fecha de lanzamiento</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            while ($row = mysqli_fetch_array($sql)) {
-                                echo "<tr>";
-                                echo "<td>" . $row["id"] . "</td>";
-                                echo "<td>" . $row["title"] . "</td>";
-                                echo "<td>" . $row["genre"] . "</td>";
-                                echo "<td>" . $row["price"] . "</td>";
-                                echo "<td>" . $row["descr"] . "</td>";
-                                echo "<td>" . $row["rating"] . "</td>";
-                                echo "<td>" . $row["img"] . "</td>";
-                                echo "<td>" . $row["release_date"] . "</td>";
-                                echo "<td>";
-                                // Formulario para editar el producto
-                                echo "<form method='POST' action='modificar_productos.php'>";
-                                echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
-                                echo "<button>Editar</button></form>";
-                                // Formulario para eliminar el producto
-                                echo "<form method='POST' action='eliminar_productos.php'>";
-                                echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
-                                echo "<button>Eliminar</button></form>";
+                // Obtener datos del producto
+                $sql = "SELECT * FROM videojuegos WHERE id = '$product_id'";
+                $result = mysqli_query($conexion, $sql);
 
-                                echo "</td>";
-                                echo "</tr>";
-                            }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+                if ($row = mysqli_fetch_assoc($result)) {
+                    // Se obtienen los datos del producto para mostrarlos en el formulario
+                    $title = $row['title'];
+                    $genre = $row['genre'];
+                    $price = $row['price'];
+                    $descr = $row['descr'];
+                    $rating = $row['rating'];
+                    $img = $row['img'];
+                    $release_date = $row['release_date'];
+                } else {
+                    // Si no se encuentra el producto, redirigir a la página de error o inicio
+                    echo "Producto no encontrado.";
+                    }
+            }
+        ?>
+        <h1>Modificar juego</h1>
+        <form method="POST" action="modificar_producto.php" name="signin-form">
+        <!-- Campo oculto para enviar el ID del producto -->
+        <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product_id); ?>">
+
+        <label>Título</label>
+        <input type="text" placeholder="LevelGame" id="title" name="title" required value="<?php echo htmlspecialchars($title); ?>">
+
+        <label>Genero</label>
+        <input type="text" placeholder="Soulslike" id="genre" name="genre" required value="<?php echo htmlspecialchars($genre); ?>">
+
+        <label>Costo</label>
+        <input type="number" placeholder="Moneyyy" id="price" name="price" required min="0" step="0.01" value="<?php echo htmlspecialchars($price); ?>">
+
+        <label>Descripción</label>
+        <input type="text" placeholder="This is a really good game" id="descr" name="descr" required value="<?php echo htmlspecialchars($descr); ?>">
+
+        <label>Puntuación</label>
+        <input type="number" placeholder="5 stars!" id="rating" name="rating" required min="1" max="5" step="0.01" value="<?php echo htmlspecialchars($rating); ?>">
+
+        <label>Imagen</label>
+        <input type="text" placeholder="URL" id="img" name="img" required value="<?php echo htmlspecialchars($img); ?>">
+
+        <label>Fecha de lanzamiento</label>
+        <input type="date" id="release_date" name="release_date" required value="<?php echo htmlspecialchars($release_date); ?>">
+        
+        <div class="modify-buttons">
+            <button type="button" onclick="window.location.href='productos_admin.php'">Cancelar</button>
+            <button type="submit" name="update" value="update">Actualizar juego</button>
         </div>
+    </form>
     </div>
 </body>
 </html>
