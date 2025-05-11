@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level UP - Ad_productos</title>
     <link rel="stylesheet" href="sidebar.css">
-    <link rel="stylesheet" href="productos_admin.css">
+    <link rel="stylesheet" href="vistas_admin.css">
     <link rel="icon" href="./Images/LOGO.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

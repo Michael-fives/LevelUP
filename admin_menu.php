@@ -92,7 +92,8 @@
     <div class="main-content">
         <h1>Menú de Administración</h1>
         <div class="admin-options">
-            <button onclick="window.location.href=''">Administrar usuarios</button>
+            <button onclick="window.location.href='./usuarios_admin.php'">Administrar usuarios</button>
+            <button onclick="window.location.href='./agregar_usuarios.php'">Agregar usuarios</button>
             <button onclick="window.location.href='./productos_admin.php'">Administrar juegos</button>
             <button onclick="window.location.href='./agregar_juegos.php'">Agregar juegos</button>
             <button onclick="window.location.href=''">Administrar pedidos</button>

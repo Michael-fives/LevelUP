@@ -1,30 +1,13 @@
 <?php
-/*
-Tabla usuarios:
-+----------------+--------------+------+-----+-------------------+-----------------------------+
-MariaDB [proyecto]> CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(40) NOT NULL,
-    passwd VARCHAR(255) NOT NULL,
-    mail VARCHAR(50) NOT NULL UNIQUE,
-    phone VARCHAR(13) NOT NULL UNIQUE,
-    admin_ BOOLEAN DEFAULT FALSE,
-    profile_pic LONGBLOB,
-    register TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    level_ INT DEFAULT 1,
-    time_played TIME
-);
-*/
 include 'conexion.php';
+session_start();
 
-// Obtener los datos del formulario
 $username = $_POST["username"];
 $mail = $_POST["mail"];
 $phone = $_POST["phone"];
 $passwd = $_POST["passwd"];
 $passwdc = $_POST["passwdc"];
 
-// Validar que las contraseñas coincidan
 if ($passwd == $passwdc) {
     // Encriptar la contraseña
     $passwd = password_hash($passwd, PASSWORD_DEFAULT);
@@ -42,7 +25,7 @@ if ($passwd == $passwdc) {
     // Verificar si la inserción fue exitosa
     if (mysqli_stmt_affected_rows($stmt) > 0) {
         // Redirigir al usuario a login.html
-        header("Location: login.html");
+        header("Location: agregar_usuarios.php?message=Usuario añadido con éxito");
         exit(); // Asegura que el script se detenga después de la redirección
     } else {
         echo "Error: " . mysqli_error($conexion);
@@ -51,7 +34,7 @@ if ($passwd == $passwdc) {
     // Cerrar la consulta preparada
     mysqli_stmt_close($stmt);
 } else {
-    header("Location: registro.html?error=Las contraseñas no coinciden");
+    header("Location: agregar_usuarios?error=Las contraseñas no coinciden");
 }
 
 // Cerrar la conexión

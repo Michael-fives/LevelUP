@@ -92,59 +92,58 @@
         <?php
             // Verificar si hay un ID en el POST
             if (isset($_POST['id'])) {
-                $product_id = $_POST['id'];
+                $user_id = $_POST['id'];
 
                 // Conexión a la base de datos
                 include 'conexion.php';
 
                 // Obtener datos del producto
-                $sql = "SELECT * FROM videojuegos WHERE id = '$product_id'";
+                $sql = "SELECT * FROM usuarios WHERE id = '$user_id'";
                 $result = mysqli_query($conexion, $sql);
 
                 if ($row = mysqli_fetch_assoc($result)) {
                     // Se obtienen los datos del producto para mostrarlos en el formulario
-                    $title = $row['title'];
-                    $genre = $row['genre'];
-                    $price = $row['price'];
-                    $descr = $row['descr'];
-                    $rating = $row['rating'];
-                    $img = $row['img'];
-                    $release_date = $row['release_date'];
+                    $username = $row['username'];
+                    $mail = $row['mail'];
+                    $phone = $row['phone'];
+                    $level = $row['level_'];
+                    $admin = $row['admin_'];
                 } else {
                     // Si no se encuentra el producto, redirigir a la página de error o inicio
                     echo "Producto no encontrado.";
                     }
             }
         ?>
-        <h1>Modificar juego</h1>
-        <form method="POST" action="modificar_producto.php" name="signin-form">
+        <h1>Modificar usuario</h1>
+        <form method="POST" action="modificar_usuario.php" name="signin-form">
         <!-- Campo oculto para enviar el ID del producto -->
-        <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product_id); ?>">
+        <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
 
-        <label>Título</label>
-        <input type="text" placeholder="LevelGame" id="title" name="title" required value="<?php echo htmlspecialchars($title); ?>">
+        <label>Username</label>
+        <input type="text" id="username" name="username" required value="<?php echo htmlspecialchars($username); ?>">
 
-        <label>Genero</label>
-        <input type="text" placeholder="Soulslike" id="genre" name="genre" required value="<?php echo htmlspecialchars($genre); ?>">
+        <label>Correo</label>
+        <input type="email" id="mail" name="mail" required value="<?php echo htmlspecialchars($mail); ?>">
 
-        <label>Costo</label>
-        <input type="number" placeholder="Moneyyy" id="price" name="price" required min="0" step="0.01" value="<?php echo htmlspecialchars($price); ?>">
+        <label>Télefono</label>
+        <input type="tel" id="phone" name="phone" required value="<?php echo htmlspecialchars($phone); ?>">
 
-        <label>Descripción</label>
-        <input type="text" placeholder="This is a really good game" id="descr" name="descr" required value="<?php echo htmlspecialchars($descr); ?>">
+        <label>Nivel</label>
+        <input type="number" id="level" name="level" step="1" required value="<?php echo htmlspecialchars($level); ?>">
 
-        <label>Puntuación</label>
-        <input type="number" placeholder="5 stars!" id="rating" name="rating" required min="0" max="5" step="0.01" value="<?php echo htmlspecialchars($rating); ?>">
-
-        <label>Imagen</label>
-        <input type="text" placeholder="URL" id="img" name="img" required value="<?php echo htmlspecialchars($img); ?>">
-
-        <label>Fecha de lanzamiento</label>
-        <input type="date" id="release_date" name="release_date" required value="<?php echo htmlspecialchars($release_date); ?>">
+        <label>Permisos de administrador</label>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="admin" value="1" <?php echo ($admin == 1) ? 'checked' : ''; ?> required> Sí
+            </label>
+            <label>
+                <input type="radio" name="admin" value="0" <?php echo ($admin == 0) ? 'checked' : ''; ?> required> No
+            </label>
+        </div>
         
         <div class="modify-buttons">
-            <button type="button" onclick="window.location.href='productos_admin.php'">Cancelar</button>
-            <button type="submit" name="update" value="update">Actualizar juego</button>
+            <button type="button" onclick="window.location.href='usuarios_admin.php'">Cancelar</button>
+            <button type="submit" name="update" value="update">Actualizar usuario</button>
         </div>
     </form>
     </div>

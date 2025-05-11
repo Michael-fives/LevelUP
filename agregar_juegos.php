@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level UP - Nuevo juego</title>
     <link rel="stylesheet" href="sidebar.css">
-    <link rel="stylesheet" href="agregar_juegos.css">
+    <link rel="stylesheet" href="agregar.css">
     <link rel="icon" href="./Images/LOGO.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,12 +100,15 @@
             <label>Descripción</label>
             <input type="text" placeholder="This is a really good game" id="descr" name="descr" required>
             <label>Puntuación</label>
-            <input type="number" placeholder="5 stars!" id="rating" name="rating" required min="1" max="5" step="0.01" >
+            <input type="number" placeholder="5 stars!" id="rating" name="rating" required min="0" max="5" step="0.01" >
             <label>Imagen</label>
             <input type="text" placeholder="URL" id="img" name="img" required>
             <label>Fecha de lanzamiento</label>
             <input type="date" id="release_date" name="release_date" required>
-            <button type="submit" name="register" value="register">Añadir juego</button>
+            <div class="modify-buttons">
+                <button type="button" class="cancel-button" onclick="window.location.href='./admin_menu.php'">Cancelar</button>
+                <button type="submit" name="register" value="register">Añadir juego</button>
+            </div>
         </form>
     </div>
 </body>

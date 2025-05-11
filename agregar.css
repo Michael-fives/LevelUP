@@ -1,0 +1,91 @@
+h1 {
+    color: white;
+    padding: 0.2em;
+    background-color: darkred;
+    border: 3px solid darkred;
+    font-size: 25px;
+    border-radius: 3em;
+    text-align: center;
+}
+
+form {
+    background-color: white;
+    border: 3px solid darkred;
+    border-radius: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+label {
+    color: darkred;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: -1.2%;
+}
+
+input {
+    background-color: white;
+    border: 3px solid darkred;
+    border-radius: 0.5em;
+    height: 2em;
+}
+
+button {
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    height: 3em;
+    cursor: pointer;
+}
+
+.modify-buttons {
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Contenedor de los radio buttons */
+.radio-group {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+/* Estilo base de los radio buttons */
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #d32f2f; /* Borde rojo */
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Radio button seleccionado */
+input[type="radio"]:checked {
+    background-color: #d32f2f; /* Fondo rojo */
+    border: 2px solid #d32f2f;
+}
+
+/* Punto interior del radio button seleccionado */
+input[type="radio"]:checked::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -75,6 +75,10 @@
     margin-right: 5px; /* Espacio entre el icono y el texto */
 }
 
+.mission:hover, .vision:hover, .ubication:hover  {
+    transform: scale(1.01);
+}
+
 
 /* Ajustes responsivos */
 @media (max-width: 1480px) { /* Cuando el ancho de la pantalla sea menor que 1480px */

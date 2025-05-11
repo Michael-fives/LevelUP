@@ -220,6 +220,15 @@ body {
     transform: scale(1.05);
 }
 
+.social-links li:hover {
+    transform: scale(1.10);
+    transform: translateX(5px);
+}
+
+.terms_and_politics a:hover {
+    transform: scale(1.10);
+}
+
 /* Fin de la barra lateral */
 
 .main-content {

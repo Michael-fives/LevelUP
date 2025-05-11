@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level UP - Editar juegos</title>
+    <title>Level UP - Nuevo juego</title>
     <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="agregar.css">
     <link rel="icon" href="./Images/LOGO.png" type="image/png">
@@ -16,7 +16,7 @@
         <div class="superior-part">
             <img src="./Images/LOGO.png" class="logo" alt="Level UP">
             <div class="user-part">
-                <?php    
+            <?php 
                     session_start();
                     include 'conexion.php';
 
@@ -62,7 +62,7 @@
                         <span class="username"><a href="./login.php">Iniciar sesión</a></span>
                 <?php
                     }
-                ?> 
+                ?>   
             </div>
             <div class="white-line"></div>
         </div>
@@ -89,64 +89,23 @@
         </div>
     </div>
     <div class="main-content">
-        <?php
-            // Verificar si hay un ID en el POST
-            if (isset($_POST['id'])) {
-                $product_id = $_POST['id'];
-
-                // Conexión a la base de datos
-                include 'conexion.php';
-
-                // Obtener datos del producto
-                $sql = "SELECT * FROM videojuegos WHERE id = '$product_id'";
-                $result = mysqli_query($conexion, $sql);
-
-                if ($row = mysqli_fetch_assoc($result)) {
-                    // Se obtienen los datos del producto para mostrarlos en el formulario
-                    $title = $row['title'];
-                    $genre = $row['genre'];
-                    $price = $row['price'];
-                    $descr = $row['descr'];
-                    $rating = $row['rating'];
-                    $img = $row['img'];
-                    $release_date = $row['release_date'];
-                } else {
-                    // Si no se encuentra el producto, redirigir a la página de error o inicio
-                    echo "Producto no encontrado.";
-                    }
-            }
-        ?>
-        <h1>Modificar juego</h1>
-        <form method="POST" action="modificar_producto.php" name="signin-form">
-        <!-- Campo oculto para enviar el ID del producto -->
-        <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product_id); ?>">
-
-        <label>Título</label>
-        <input type="text" placeholder="LevelGame" id="title" name="title" required value="<?php echo htmlspecialchars($title); ?>">
-
-        <label>Genero</label>
-        <input type="text" placeholder="Soulslike" id="genre" name="genre" required value="<?php echo htmlspecialchars($genre); ?>">
-
-        <label>Costo</label>
-        <input type="number" placeholder="Moneyyy" id="price" name="price" required min="0" step="0.01" value="<?php echo htmlspecialchars($price); ?>">
-
-        <label>Descripción</label>
-        <input type="text" placeholder="This is a really good game" id="descr" name="descr" required value="<?php echo htmlspecialchars($descr); ?>">
-
-        <label>Puntuación</label>
-        <input type="number" placeholder="5 stars!" id="rating" name="rating" required min="0" max="5" step="0.01" value="<?php echo htmlspecialchars($rating); ?>">
-
-        <label>Imagen</label>
-        <input type="text" placeholder="URL" id="img" name="img" required value="<?php echo htmlspecialchars($img); ?>">
-
-        <label>Fecha de lanzamiento</label>
-        <input type="date" id="release_date" name="release_date" required value="<?php echo htmlspecialchars($release_date); ?>">
-        
-        <div class="modify-buttons">
-            <button type="button" onclick="window.location.href='productos_admin.php'">Cancelar</button>
-            <button type="submit" name="update" value="update">Actualizar juego</button>
-        </div>
-    </form>
+        <h1>Agregar usuario</h1>
+        <form method="POST" action="registros_admin.php" name="signin-form">
+            <label>Nombre de usuario</label>
+            <input type="text" placeholder="ChillGuy" id="username" name="username" required>
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="levelup@gmail.com" id="mail" name="mail" required>
+            <label>Número telefónico</label>
+            <input type="tel" placeholder="33 XXXX XXXX" id="phone" name="phone" required>
+            <label>Contraseña</label>
+            <input type="password" placeholder="••••••••" id="passwd" name="passwd" required>
+            <label>Confirmar contraseña</label>
+            <input type="password" placeholder="••••••••" id="passwdc" name="passwdc" required>
+            <div class="modify-buttons">
+                <button type="button" class="cancel-button" onclick="window.location.href='./admin_menu.php'">Cancelar</button>
+                <button type="submit" name="register" value="register">Agregar usuario</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
