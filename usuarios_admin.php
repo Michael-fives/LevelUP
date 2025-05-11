@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level UP - Ad_productos</title>
+    <title>Level UP - Ad_usuarios</title>
     <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="vistas_admin.css">
     <link rel="icon" href="./Images/LOGO.png" type="image/png">
