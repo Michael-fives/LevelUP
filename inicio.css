@@ -156,7 +156,7 @@
 }
 
 .card button:hover {
-    background-color: #2980b9;
+    background-color: gray;
 }
 
 .left-side {
@@ -184,6 +184,12 @@
     margin-top: auto;
     align-items: flex-end; 
     gap: 10px;
+}
+
+.disabled-button {
+    background-color: white !important;
+    border: 3px solid darkred !important;
+    color: darkred !important;
 }
 
 /* Ajustes responsivos */

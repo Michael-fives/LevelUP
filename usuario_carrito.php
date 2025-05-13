@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level UP - Inicio</title>
+    <title>Level UP - Tu carrito</title>
     <link rel="stylesheet" href="sidebar.css">
-    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="carrito.css">
     <link rel="icon" href="./Images/LOGO.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +68,7 @@
         </div>
         <div class="menu-part">
             <ul class="menu">
-                <li class = "actual-li"><a class="actual" href="./productos_usuario.php">Inicio</a></li>
+                <li><a href="./productos_usuario.php">Inicio</a></li>
                 <li><a href="#perfil">Perfil</a></li>
                 <li><a href="#amigos">Amigos</a></li>
                 <li><a href="./acercade.php">Acerca de nosotros</a></li>
@@ -89,86 +89,78 @@
         </div>
     </div>
     <div class="main-content">
-        <div class="superior-bar">
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar...">
-            </div>
-            <button class="filter-button" onclick="">
-                <img src="./Images/filterIcon.png" class="filter-icon">
-            </button>
-            <form action="usuario_carrito.php" method="POST">
-                <button class="cart-button">
-                    <img src="./Images/cartIcon.png" class="cart-icon">
-                </button>
-            </form>
-        </div>
-        <div class="container">
-            <?php 
-                include 'conexion.php';
+        <div class="content">
+            <table>
+                <tr>
+                    <th>Tu carrito:</th>
+                    <th>Videojuego</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    $username = mysqli_real_escape_string($conexion, $_SESSION['username']);
+                    
+                    // Obtener ID del usuario
+                    $result = mysqli_query($conexion, "SELECT id FROM usuarios WHERE username = '$username'");
+                    $row = mysqli_fetch_assoc($result);
+                    $id_user = $row['id'];
 
-                // Obtener los datos del formulario
-                $sql = mysqli_query($conexion, "SELECT * FROM videojuegos");
+                    // Obtener los videojuegos en el carrito del usuario
+                    $query = mysqli_query($conexion, "SELECT id_videogame FROM carrito WHERE id_user = '$id_user'");
 
-                while ($row = mysqli_fetch_array($sql)) {
-            ?>
-                <div class="videogames">
-                    <div class="card">
-                        <div class="left-side">
-                            <img src="./Game/<?php echo $row["img"]; ?>" alt="<?php echo $row["title"]; ?>">
-                            <p class="release-date"><?php echo $row["release_date"]; ?></p>
-                            <p class="genre"><?php echo $row["genre"]; ?></p>
-                            <div class="bottom-left-side">
-                                <h2><?php echo $row["title"]; ?></h2>
-                            </div>
-                        </div>
-                        <div class="right-side">
-                            <p class="description"><?php echo $row["descr"]; ?></p>
-                            <div class="bottom-right-side">
-                                <p class="price">$<?php echo $row["price"]; ?></p>
-                                <p class="rating">Rating: <?php echo $row["rating"]; ?>/5</p>
-                                <?php
-                                // Verificar si el videojuego ya está en el carrito
-                                if (isset($_SESSION['username'])) {
-                                    $username = mysqli_real_escape_string($conexion, $_SESSION['username']);
-                                    $sql_user = mysqli_query($conexion, "SELECT id FROM usuarios WHERE username = '$username'");
-                                    $row_user = mysqli_fetch_assoc($sql_user);
-                                    $id_user = $row_user['id'];
+                    while ($row = mysqli_fetch_assoc($query)) {
+                        $id_videogame = $row['id_videogame'];
 
-                                    $sql_cart = mysqli_query($conexion, "SELECT * FROM carrito WHERE id_user = '$id_user' AND id_videogame = '" . $row["id"] . "'");
-                                    
-                                    if (mysqli_num_rows($sql_cart) > 0) {
-                                ?>
-                                <form action="eliminar_carrito.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
-                                    <button class="disabled-button">Ya en el carrito</button>
-                                </form>
-                                <?php
-                                    }
-                                    else {
-                                ?>
-                                <form action="agregar_carrito.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
-                                    <button type="submit">Agregar al carrito</button>
-                                </form>
-                                <?php
-                                    }
-                                } else {
-                                ?>
-                                <form action="agregar_carrito.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
-                                    <button type="submit">Agregar al carrito</button>
-                                </form>
-                                <?php
-                                }
-                                // Fin de la verificación
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php
+                        // Obtener info del videojuego
+                        $stmt = mysqli_prepare($conexion, "SELECT title, price, img FROM videojuegos WHERE id = ?");
+                        mysqli_stmt_bind_param($stmt, "i", $id_videogame);
+                        mysqli_stmt_execute($stmt);
+                        mysqli_stmt_bind_result($stmt, $title, $price, $img);
+                        mysqli_stmt_fetch($stmt);
+
+                        // Mostrar
+                        echo "<tr>";
+                        echo "<td><img src='./Game/$img' class='product-image'></td>";
+                        echo "<td>" . htmlspecialchars($title) . "</td>";
+                        echo "<td>" . htmlspecialchars($price) . "</td>";
+                        echo "<td>";
+                        echo "<form action='eliminar_carrito.php' method='POST'>";
+                        echo "<input type='hidden' name='id' value='" . htmlspecialchars($id_videogame) . "'>";
+                        echo "<button type='submit' class='remove-button'>X</button>";
+                        echo "</form>";
+                        echo "</td>";
+                        echo "</tr>";
+
+                        mysqli_stmt_close($stmt);
+                    }
+                } else {
+                    header("Location: login.php?error=Debes iniciar sesión para ver tu carrito");
+                    exit();
                 }
-            ?>  
+                ?>
+            </table>
+        </div>
+        <div class="actions">
+            <div class="pay-box">
+                <h2>Total a pagar:</h2>
+                <p id="total-price">
+                    <?php
+                    // Calcular el total
+                    $total = 0;
+                    $query = mysqli_query($conexion, "SELECT price FROM videojuegos WHERE id IN (SELECT id_videogame FROM carrito WHERE id_user = '$id_user')");
+                    while ($row = mysqli_fetch_assoc($query)) {
+                        $total += $row['price'];
+                    }
+                    echo "$" . number_format($total, 2);
+                    ?>
+                </p>
+                <div class="pay-button-container">
+                    <button class="pay-button" onclick="window.location.href='./pago.php'">Pagar</button>
+                </div>
+            </div>
+            <button class="clean-button" onclick="window.location.href='./vaciar_carrito.php'">Vaciar carrito</button>
+            <button class="continue-button" onclick="window.location.href='./productos_usuario.php'">Seguir comprando</button>
         </div>
     </div>
 </body>

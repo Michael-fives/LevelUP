@@ -1,0 +1,133 @@
+.main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5%;
+}
+
+.content {
+    flex: 6;
+}
+
+.actions {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+}
+
+.actions button {
+    background-color: darkred;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 80%;
+    padding: 1em;
+    transition: background-color 0.3s ease;
+    border-radius: 10%;
+}
+
+.pay-box {
+    background-color: #f8f9fa;
+    padding: 0.3em 1em;
+    border: 3px solid darkred;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin-top: 1.3em;
+}
+
+.pay-box p {
+    color: #2ecc71;
+    text-align: right;
+}
+
+.pay-button-container {
+    text-align: right;
+}
+
+.pay-box button {
+    margin-bottom: 5%;
+}
+
+table {
+    border-collapse: collapse;
+    font-family: 'KoHo', sans-serif;
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background: white;
+}
+
+table th {
+    background-color: darkred;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: top;
+}
+
+table img {
+    height: 5em;
+    width: auto;
+    border-radius: 10%;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table th:first-child {
+    border-top-left-radius: 10px;
+}
+
+table th:last-child {
+    border-top-right-radius: 10px;
+    text-align: right;
+}
+
+table td:last-child {
+    text-align: right;
+}
+
+table button {
+    background-color: darkred;
+    width: 3em;
+    height: auto;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 80%;
+    padding: 1em 1em;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5%;
+    border-radius: 10%;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: grey;
+}
+
+.clean-button {
+    width: 70%;
+    border-radius: 4% !important;
+}
+
+.continue-button {
+    width: 70%;
+    border-radius: 4% !important;
+}
