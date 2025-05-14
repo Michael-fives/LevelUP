@@ -15,7 +15,17 @@ if (isset($_POST['id'])) {
             header("Location: usuarios_admin.php?message=No puedes eliminar tu propio usuario");
             exit();
         }
+        
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+        }
+        else {
+            $username = "Cuenta eliminada";
+        }
+
+        mysqli_query($conexion, "SET @username = '$username'");
         $delete_sql = "DELETE FROM usuarios WHERE id = '$id'";
+
         if (mysqli_query($conexion, $delete_sql)) {
             header("Location: usuarios_admin.php?message=Usuario eliminado con éxito");
             exit();

@@ -8,6 +8,8 @@ $phone = $_POST['phone'];
 $level = $_POST['level'];
 $admin = $_POST['admin'];
 
+$username2 = $_SESSION['username'];
+mysqli_query($conexion, "SET @username = '$username2'");
 $sql = "UPDATE usuarios SET
         username = '$username',
         mail = '$mail',

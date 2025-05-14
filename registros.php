@@ -16,6 +16,7 @@ MariaDB [proyecto]> CREATE TABLE usuarios (
 );
 */
 include 'conexion.php';
+session_start();
 
 // Obtener los datos del formulario
 $username = $_POST["username"];
@@ -30,6 +31,13 @@ if ($passwd == $passwdc) {
     $passwd = password_hash($passwd, PASSWORD_DEFAULT);
 
     // Preparar la consulta SQL
+    if (isset($_SESSION['username'])) {
+        $username2 = $_SESSION['username'];
+    }
+    else {
+        $username2 = "Registro";
+    }
+    mysqli_query($conexion, "SET @username = '$username2'");
     $stmt = mysqli_prepare($conexion, "INSERT INTO usuarios (username, passwd, mail, phone, admin_, profile_pic, register, level_, time_played) 
                                        VALUES (?, ?, ?, ?, FALSE, NULL, NOW(), 1, '00:00:00')");
 
@@ -42,7 +50,7 @@ if ($passwd == $passwdc) {
     // Verificar si la inserción fue exitosa
     if (mysqli_stmt_affected_rows($stmt) > 0) {
         // Redirigir al usuario a login.html
-        header("Location: login.html");
+        header("Location: login.php");
         exit(); // Asegura que el script se detenga después de la redirección
     } else {
         echo "Error: " . mysqli_error($conexion);

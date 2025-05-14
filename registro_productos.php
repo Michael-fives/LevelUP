@@ -14,6 +14,7 @@ MariaDB [proyecto]> CREATE TABLE videojuegos (
     -> );
 */
 include 'conexion.php';
+session_start();
 
 // Obtener los datos del formulario
 $title = $_POST["title"];
@@ -25,6 +26,8 @@ $img = $_POST["img"];
 $release_date = $_POST["release_date"];
 
 // Preparar la consulta SQL
+$username = $_SESSION['username'];
+mysqli_query($conexion, "SET @username = '$username'");
 $stmt = mysqli_prepare($conexion, "INSERT INTO videojuegos (title, genre, price, descr, rating, img, release_date) 
                                    VALUES (?, ?, ?, ?, ?, ?, ?)");
 

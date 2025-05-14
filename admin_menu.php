@@ -97,7 +97,7 @@
             <button onclick="window.location.href='./productos_admin.php'">Administrar juegos</button>
             <button onclick="window.location.href='./agregar_juegos.php'">Agregar juegos</button>
             <button onclick="window.location.href=''">Administrar pedidos</button>
-            <button onclick="window.location.href=''">Ver reportes</button>
+            <button onclick="window.location.href='./bitacora_admin.php'">Ver bitácora</button>
         </div>
     </div>
 </body>

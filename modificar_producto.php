@@ -14,7 +14,9 @@
         $img = $_POST['img'];
         $release_date = $_POST['release_date'];
 
-        // Actualizar el producto en la base de datos
+        // Actualizar el producto en la base de datos y soltar el trigger
+        $username = $_SESSION['username'];
+        mysqli_query($conexion, "SET @username = '$username'");
         $sql = "UPDATE videojuegos SET 
                 title = '$title',
                 genre = '$genre',
