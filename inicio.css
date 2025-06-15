@@ -192,6 +192,17 @@
     color: darkred !important;
 }
 
+.bought-button {
+    background-color: white !important;
+    color: darkred !important;
+    border: 3px dashed darkred !important;
+}
+
+.bought-button:hover {
+    background-color: goldenrod !important;
+    color: white !important;
+}
+
 /* Carrusel de imagenes */
 .full-carousel {
     position: relative;

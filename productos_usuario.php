@@ -160,32 +160,34 @@
                                     $id_user = $row_user['id'];
 
                                     $sql_cart = mysqli_query($conexion, "SELECT * FROM carrito WHERE id_user = '$id_user' AND id_videogame = '" . $row["id"] . "'");
-                                    
-                                    if (mysqli_num_rows($sql_cart) > 0) {
+                                    $sql_buys = mysqli_query($conexion, "SELECT * FROM compras WHERE id_user = '$id_user' AND id_videogame = '" . $row["id"] . "'");
+                                    if (mysqli_num_rows($sql_buys) > 0) {
+                                        // Si el videojuego ya ha sido comprado, mostrar un botón deshabilitado
+                                ?>
+                                <form method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
+                                    <button class="bought-button">Ya adquirido</button>
+                                </form>
+                                <?php
+                                    } else {
+                                        if (mysqli_num_rows($sql_cart) > 0) {
+                                        // Si el videojuego ya está en el carrito, mostrar un botón deshabilitado
                                 ?>
                                 <form action="eliminar_carrito.php" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
                                     <button class="disabled-button">Ya en el carrito</button>
                                 </form>
                                 <?php
-                                    }
-                                    else {
+                                        } else {
                                 ?>
                                 <form action="agregar_carrito.php" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
                                     <button type="submit">Agregar al carrito</button>
                                 </form>
                                 <?php
+                                        }  
                                     }
-                                } else {
-                                ?>
-                                <form action="agregar_carrito.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
-                                    <button type="submit">Agregar al carrito</button>
-                                </form>
-                                <?php
-                                }
-                                // Fin de la verificación
+                                } 
                                 ?>
                             </div>
                         </div>
