@@ -102,6 +102,31 @@
                 </button>
             </form>
         </div>
+        <div class="full-carousel">
+            <div class="preview-left">
+                <img src="./Images/switch2.jpeg" alt="Preview Image"> <!-- Imagen de vista previa durante la primer carga -->
+            </div>
+            <div class="carousel">
+                <button id="prev" class="prev-button">&#10094;</button>
+                <div class="carousel-item active" id="carousel-item">
+                    <img src="./Images/consolas.png" alt="Carousel Image 1">
+                    <p class="carousel-text">¡Compra videojuegos de todas las plataformas!</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="./Images/xboxp.jpeg" id="carousel-item" alt="Carousel Image 2">
+                    <p class="carousel-text">¡Competencia portatil de Xbox!</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="./Images/switch2.jpeg" id="carousel-item" alt="Carousel Image 3">
+                    <p class="carousel-text">¡Nueva Nintendo Switch 2!</p>
+                </div>
+                <button id="next" class="next-button">&#10095;</button>
+                <script src="carrusel.js"></script>
+            </div>
+            <div class="preview-right">
+                <img src="./Images/xboxp.jpeg" alt="Preview Image">
+            </div>
+        </div>
         <div class="container">
             <?php 
                 include 'conexion.php';

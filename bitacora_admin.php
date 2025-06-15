@@ -94,7 +94,7 @@
                 include 'conexion.php';
 
                 // Obtener los datos del formulario
-                $sql = mysqli_query($conexion, "SELECT * FROM bitacora");
+                $sql = mysqli_query($conexion, "SELECT * FROM bitacora ORDER BY id DESC");
             ?>
             <div class="table container">
                 <table>
