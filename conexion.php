@@ -1,9 +1,9 @@
 <?php
 
 $server = "localhost";
-$database = "proyecto";
+$database = "levelup";
 $user = "root";
-$password = "1234";
+$password = "";
 
 $conexion = mysqli_connect($server, $user, $password, $database);
 

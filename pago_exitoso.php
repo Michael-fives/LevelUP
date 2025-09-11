@@ -138,7 +138,7 @@
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = ''; // Tu correo de Gmail
+            $mail->Username = 'mikegilpin3@gmail.com'; // Tu correo de Gmail
             $mail->Password = 'embk byhf snau aydj'; // Tu App Password, debido a que Gmail ya no permite contraseñas normales
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
