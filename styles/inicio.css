@@ -1,0 +1,361 @@
+.main-content {
+    flex-grow: 1; /* Permite que el contenido principal ocupe el resto del espacio */
+    background-image: url(../img/Images/deffaultBG.png);
+    transition: all 0.5s;
+    padding: 20px;
+    overflow: auto;
+    overflow-x: auto;
+    z-index: 1;
+    margin-left: 25%;
+    font-family: 'KoHo', sans-serif;
+}
+
+/* Barra de bsuqueda y botones */
+
+.superior-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    background-color: darkred;
+    padding: 0.5em;
+    border-radius: 2em;
+}
+
+.search-bar {
+    flex: 6;
+    min-width: 0;
+}
+
+.search-bar input {
+    width: 95%;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    padding: 0 15px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px darkred;
+}
+
+.filter-button, .cart-button {
+    width: 3em;
+    height: 3em;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+    margin-left: 1em;
+}
+
+.filter-button:hover, .cart-button:hover {
+    transform: scale(1.05);
+}
+
+.filter-icon, .cart-icon {
+    width: 80%;
+    height: 80%;
+    object-fit: contain; 
+}
+
+/* Fin de la barra de busqueda y botones */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.5em 3em; 
+    width: 100%;
+    max-width: 100%;
+}
+
+.card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 16px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 5px solid darkred;
+    width: 90.5%;
+    height: 90%;
+    margin-top: 5%;
+}
+
+.card div {
+    margin-left: 1em;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+    object-fit: cover;
+    border-radius: 8px;
+    width: 15em;
+    height: 22em;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+}
+
+.card .description {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.card .price {
+    color: #2ecc71;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.card .release-date {
+    font-size: 0.70rem;
+    color: #888;
+}
+
+.card .genre {
+    font-size: 0.85rem;
+    color: black;
+    margin-top: -0.9em;
+}
+
+.card .rating {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.card button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color:darkred;
+    color: white;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: gray;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    justify-content: space-between; 
+}
+
+.bottom-left-side {
+    margin-top: auto;
+    align-items: flex-end; 
+    gap: 10px;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    justify-content: space-between;
+    padding-right: -3em;;
+}
+
+.bottom-right-side {
+    margin-top: auto;
+    align-items: flex-end; 
+    gap: 10px;
+}
+
+.disabled-button {
+    background-color: white !important;
+    border: 3px solid darkred !important;
+    color: darkred !important;
+}
+
+.bought-button {
+    background-color: white !important;
+    color: darkred !important;
+    border: 3px dashed darkred !important;
+}
+
+.bought-button:hover {
+    background-color: goldenrod !important;
+    color: white !important;
+}
+
+/* Carrusel de imagenes */
+.full-carousel {
+    position: relative;
+    width: 100%;
+    height: 45%;
+    overflow: hidden;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1.5em;
+    margin-bottom: 0.1em;
+}
+
+.carousel {
+    position: relative;
+    width: 45%;
+    height: 95%;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid darkred;
+    z-index: 2;
+}
+
+.carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 105%;
+    height: 105%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.active img {
+    opacity: 1;
+}
+
+.active p {
+    position: absolute;
+    left: 50%;
+    bottom: 0.05em;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.2em;
+    border-radius: 5%;
+}
+
+#next, #prev {
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    border: 3px solid darkred;
+    color: darkred;
+    z-index: 3;
+    background-color: white;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#next:hover, #prev:hover {
+    transform: scale(1.05);
+}
+
+#next {
+    right: 1em;
+    top: 80%;
+}
+
+#prev {
+    left: 1em;
+    top: 80%;
+}
+
+.preview-left,
+.preview-right {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 25%;
+  height: 60%;
+  background-color: white;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  border: 3px solid rgba(139, 0, 0, 0.9);
+  border-radius: 10%;
+}
+
+.preview-left {
+  left: 2em;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+.preview-right {
+  right: 2em;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+}
+
+.preview-left img,
+.preview-right img {
+  width: 105%;
+  height: 105%;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: opacity 0.7s ease-in-out;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1480px) { /* Cuando el ancho de la pantalla sea menor que 1480px */
+    .sidebar-menu {
+        width: 370px; /* Fija el ancho de la barra lateral a su mínimo */
+        overflow: auto;
+    }
+
+    .main-content {
+        margin-left: 370px; /* Ajusta el margen izquierdo al ancho fijo de la barra lateral */
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+        gap: 1em; /* Reduce el espacio entre las tarjetas */
+    }
+}
+
+@media (max-width: 800px) { /* Para pantallas muy pequeñas */
+    .sidebar-menu {
+        width: 100%;
+        min-width: 100%;
+        overflow: auto;
+    }
+
+    .main-content {
+        margin-left: 0; /* Elimina el margen izquierdo */
+        padding-left: 20px; /* Añade un padding para que el contenido no quede pegado al borde */
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+        gap: 1em; /* Reduce el espacio entre las tarjetas */
+    }
+}
