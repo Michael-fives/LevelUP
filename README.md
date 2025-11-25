@@ -43,7 +43,11 @@ Importa la base de datos en MySQL (archivo levelup.sql incluido en la carpeta de
 Inicia el servidor (XAMPP/WAMP).  
 
 Abre en tu navegador:  
-http://localhost/LevelUP/productos_usuario.php  
+http://localhost/LevelUP/productos_usuario.php
+
+**Cuenta administrador:**
+Correo: mikegilpin132@gmail.com
+Contraseña: mikegilpin132
 
 ---
 

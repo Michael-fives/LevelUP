@@ -50,7 +50,7 @@ if ($passwd == $passwdc) {
     // Verificar si la inserción fue exitosa
     if (mysqli_stmt_affected_rows($stmt) > 0) {
         // Redirigir al usuario a login.html
-        header("Location: login.php");
+        header("Location: ../login/login.php");
         exit(); // Asegura que el script se detenga después de la redirección
     } else {
         echo "Error: " . mysqli_error($conexion);
@@ -59,7 +59,7 @@ if ($passwd == $passwdc) {
     // Cerrar la consulta preparada
     mysqli_stmt_close($stmt);
 } else {
-    header("Location: registro.html?error=Las contraseñas no coinciden");
+    header("Location: ../login/registro.html?error=Las contraseñas no coinciden");
 }
 
 // Cerrar la conexión

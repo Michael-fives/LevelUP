@@ -35,7 +35,7 @@
                         
                 ?>
                             <button class="logout-button" onclick="window.location.href='../functions/logout.php'">
-                                <img src="../img/Images/logoutIcon.png" class="logout-icon">
+                                <img src="../../img/Images/logoutIcon.png" class="logout-icon">
                             </button>
                             <span class="username"><a href="#user">@<?php echo htmlspecialchars($row["username"]); ?></a></span>
                 <?php
@@ -105,7 +105,7 @@
         ?>
         <button class="back-button" onclick="window.location.href='./usuario_carrito.php'">&#10094;</button>
         <div class="payment-container">
-            <script src="https://www.paypal.com/sdk/js?client-id=AakNZcwVU6KJMHDELwRhEM1SVpqFqYC7cv7sE5LEoKSqcSiDpohLHn5OfyQZ8eCcDAFsDLVul7rlkTRm&currency=USD"></script>
+            <script src="https://www.sandbox.paypal.com/sdk/js?client-id=AakNZcwVU6KJMHDELwRhEM1SVpqFqYC7cv7sE5LEoKSqcSiDpohLHn5OfyQZ8eCcDAFsDLVul7rlkTRm&currency=USD"></script>
             <h1>Procesar pago con PayPal</h1>
             <p>Total a pagar: <strong>$<?php echo number_format($total, 2); ?> USD</strong></p>
             <div id="paypal-button-container"></div>
